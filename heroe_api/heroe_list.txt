@@ -1,0 +1,26 @@
+346	Iron Man
+149	Captain America
+659	Thor
+156	Captain Marvel
+157	Captain Marvel
+158	Captain Marvel 2
+332	Hulk
+107	Black Widow
+106	Black Panther
+313	Hawkeye
+620	Spider-Man
+621	Spider-Man
+622	Spider-Man
+226	Doctor Strange
+579	Scarlet Witch
+536	Quicksilver
+30	Ant-Man
+703	War Machine
+714	Winter Soldier
+697	Vision
+251	Falcon
+630	Star-Lord
+234	Drax the Destroyer
+275	Gamora
+566	Rocket Raccoon
+303	Groot

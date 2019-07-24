@@ -27,6 +27,11 @@ class Heroe {
   String combat;
   
   //classic constructor
+  //Heroe(name, power) {
+    //this.name = name;
+    //this.power = power;
+  //};
+  //short
   Heroe({this.name, this.power});
   //named constructor
   Heroe.fromJson(Map parsedJson ) {

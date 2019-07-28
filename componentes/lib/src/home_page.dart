@@ -7,20 +7,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Componentes'),
+        centerTitle: true,
       ),
       body: _list(),
     );
   }
 
+  //Method to call a future from provider
+  //-------------------------------------
+  
   Widget _list() {
-
-    // THIS WAY IS INCORRECT BECAUSE NOT WORK AS ASYNCRONOUS
-    // menuProvider.opciones;
-
-    // return ListView(
-    //   children: _listItems(),
-    // );
-
 
     return FutureBuilder(
       future: menuProvider.cargarData(),
@@ -34,26 +30,22 @@ class HomePage extends StatelessWidget {
 
   }
 
+  //Method to print a listTile into the ListView
+  //--------------------------------------------
   List<Widget> _listItems(List<dynamic> data) {
-    
-    return data.map((item){
-      return Column(
-        children: <Widget>[
-          ListTile(
-            leading: Icon(Icons.account_circle, color: Colors.blue,),
-            title: Text("${item['texto'].toString()}"),
-            trailing: Icon(Icons.arrow_forward_ios, color: Colors.blue),
-            onTap: (){},
-          ),
-        ],
-      );
-    }).toList();
-
-    //print(data);
-    // for (var opt in data) {
-      
-    // }
-
+      return data.map((item){
+        return Column(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.check_circle),
+              title: Text(item['texto']),
+              subtitle: Text('Subtitle'),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: (){},
+            ),
+          ],
+        );
+      }).toList();
   }
 
 }

@@ -1,4 +1,5 @@
 import 'package:componentes/src/providers/menu_provider.dart';
+import 'package:componentes/src/utils/icon_string_util.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
       initialData: [],
       builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(
-          children: _listItems(snapshot.data),
+          children: _listItems(snapshot.data, context),
         );
       },
     );
@@ -32,16 +33,18 @@ class HomePage extends StatelessWidget {
 
   //Method to print a listTile into the ListView
   //--------------------------------------------
-  List<Widget> _listItems(List<dynamic> data) {
+  List<Widget> _listItems(List<dynamic> data,BuildContext context) {
       return data.map((item){
         return Column(
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.check_circle),
+              leading: getIcon(item['icon']),
               title: Text(item['texto']),
               subtitle: Text('Subtitle'),
               trailing: Icon(Icons.arrow_forward_ios),
-              onTap: (){},
+              onTap: (){
+                Navigator.pushNamed(context, item['ruta']);
+              },
             ),
           ],
         );

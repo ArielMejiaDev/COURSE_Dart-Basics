@@ -5,7 +5,7 @@
 // it implements a Singleton patter to provide same instance
 // in every new SharedPrefData object it returns the same instance
 // so it only need to be instanciate as main void level
-// and it could be share on any app level
+// and it could be share on any app level, a detail explanation below
 
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,6 +41,22 @@ class SharedPreferenceData {
     _prefs.setInt('genero', value);
   }
 
-
-
 }
+
+
+// Detail explanation
+//-------------------------------------------------------------
+// Why use singleton for shared preference package
+// you could only craete a file with a variable
+// that instanciate the shared preference package
+// and then call getInstance() method
+// so you can call the method getInt or any other 
+// getBool or other getter or set method like setInt
+// so why make all the effort to create a singleton?
+// to create a single instance that can be handle
+// globally in every new instance of the same object
+// and as a pro you can create many custom getters 
+// or setter to manage the logic as you want
+// and inside those getters and setters you can 
+// instanciate the getInt or setInt method from the
+// shared preference package

@@ -30,11 +30,11 @@ class _SettingsPageState extends State<SettingsPage> {
 
   }
 
-    _loadPreferences() async{
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      _genero = prefs.getInt('genero');
-      setState(() {});
-    }
+  _loadPreferences() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _genero = prefs.getInt('genero');
+    setState(() {});
+  }
 
   _setSelectedRadio(int value) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();

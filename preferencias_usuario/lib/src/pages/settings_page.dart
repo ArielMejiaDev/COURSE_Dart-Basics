@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:preferencias_usuario/src/shared_preference_data/shared_preference_data.dart';
 import 'package:preferencias_usuario/src/widgets/menu.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,6 +16,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   //Props
   //--------------------------------------------------------------------
+  final prefs = new SharedPreferenceData();
   bool    _colorSecundario    = true;
   int     _genero             = 1;
   String  _name               = 'John Doe';
@@ -23,30 +25,41 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     super.initState();
-    //get preference to set a value
-    _loadPreferences();
+    _genero = prefs.genero;
+    _name = prefs.name;
     _nameInputController.text = _name;
+    //_nameInputController.text = prefs.name;
     //other way to assign _name value to a controller _nameController = new TextEditingController(text: _name);
 
   }
 
-  _loadPreferences() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _genero = prefs.getInt('genero');
-    setState(() {});
-  }
-
-  _setSelectedRadio(int value) async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('genero', value);
+  _setSelectedRadio(int value) {
+    prefs.genero = value;
     _genero = value;
     setState(() {});
   }
 
+  _setColorSecundario(bool value) {
+    prefs.colorSecundario = value;
+    _colorSecundario = value;
+    setState(() {});
+  }
+
+   _setName(value) {
+     prefs.name = value;
+     _name = value;
+     setState(() {});
+   }
+
   @override
   Widget build(BuildContext context) {
+    prefs.ultimaPagina = SettingsPage.routeName;
     return Scaffold(
-      appBar: AppBar(title: Text('Ajustes'), centerTitle: true,),
+      appBar: AppBar(
+        title: Text('Ajustes'), 
+        centerTitle: true,
+        backgroundColor: prefs.colorSecundario ? Colors.blue : Colors.pink,
+      ),
       drawer: Menu(),
       body: ListView(
         children: <Widget>[
@@ -61,11 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
           SwitchListTile(
             value: _colorSecundario,
             title: Text('Color Secundario'),
-            onChanged: (value){
-              setState(() {
-               _colorSecundario = value; 
-              });
-            },
+            onChanged: _setColorSecundario,
           ),
           RadioListTile(
             value: 1,
@@ -92,7 +101,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 hintText: 'user firstname here',
                 suffixIcon: Icon(Icons.person, color: Colors.blue)
               ),
-              onChanged: (value){},
+              onChanged: _setName,
             ),
           ),
         ],

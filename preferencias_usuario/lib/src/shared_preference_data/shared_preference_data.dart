@@ -41,6 +41,30 @@ class SharedPreferenceData {
     _prefs.setInt('genero', value);
   }
 
+  get colorSecundario {
+    return _prefs.getBool('colorSecundario') ?? true;
+  }
+
+  set colorSecundario(bool value) {//setter do not return anything
+    _prefs.setBool('colorSecundario', value);
+  }
+
+  get name {
+    return _prefs.getString('name') ?? '';
+  }
+
+  set name(String value) {//setter do not return anything
+    _prefs.setString('name', value);
+  }
+
+  get ultimaPagina {
+    return _prefs.getString('ultimaPagina') ?? 'home';
+  }
+
+  set ultimaPagina(String value) {//setter do not return anything
+    _prefs.setString('ultimaPagina', value);
+  }
+
 }
 
 

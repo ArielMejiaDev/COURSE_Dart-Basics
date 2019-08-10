@@ -1,4 +1,4 @@
-package com.example.componentes;
+package com.ariel.componentes;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

@@ -1,11 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/services.dart' show rootBundle;
 
 class _MenuProvider {
 
   List opciones = [];
-
   _MenuProvider();
 
   Future<List<dynamic>> cargarData() async {
